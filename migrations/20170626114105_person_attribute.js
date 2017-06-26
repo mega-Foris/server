@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.integer('attribute_id').unsigned();
     table.foreign('person_id').references('person.id');
     table.foreign('attribute_id').references('attribute.id');
+    table.string('value').notNullable();
   });
 };
 

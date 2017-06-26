@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('city').notNullable();
     table.string('state').notNullable();
     table.integer('zip').notNullable();
-    table.text('google_id');
+    table.string('google_id');
   });
 };
 
