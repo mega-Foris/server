@@ -1,4 +1,4 @@
-const express = require('express');
+ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -8,8 +8,8 @@ const cors = require('cors');
 
 const app = express();
 
-const persons = require('./api/persons.js');
 const events = require('./api/events.js');
+const persons = require('./api/persons.js');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -25,6 +25,7 @@ app.use(cors({
 
 //app.use('/api/v1/persons', persons);
 app.use('/api/v1/events', events);
+app.use('/api/v1/persons', persons);
 
 
 // catch 404 and forward to error handler
