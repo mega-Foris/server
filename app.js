@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({
-  origin: 'https://foris-adventures.firebaseapp.com',
+  origin: 'https://foris-adventures.firebaseapp.com' || 'http://localhost:8080',
   optionsSuccessStatus:200
 }));
 
