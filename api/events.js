@@ -10,4 +10,30 @@ router.get('/', (req,res)=>{
   });
 });
 
+router.get('/:id', (req,res)=>{
+  queries.getOneEventByID(req.params.id).then(events=>{
+    res.json(events);
+  });
+});
+
+router.get('/sport/:sport', (req,res)=>{
+  queries.getAllEventsBySport(req.params.sport).then(events=>{
+    res.json(events);
+  });
+});
+
+router.get('/difficulty/:difficulty', (req,res)=>{
+  queries.getAllEventsByDifficulty(req.params.difficulty).then(events=>{
+    res.json(events);
+  });
+});
+
+router.get('/sport/:sport/difficulty/:difficulty', (req,res)=>{
+  queries.getAllEventsBySportAndDifficulty(req.params.sport, req.params.difficulty).then(events=>{
+    res.json(events);
+  });
+});
+
+
+
 module.exports = router;
