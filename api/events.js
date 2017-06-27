@@ -4,8 +4,6 @@ const router = express.Router();
 
 const queries = require('../db/queries.js');
 
-const queriesv1  = require('../db/queriesv1.js');
-
 router.get('/', (req,res)=>{
   queries.getAllEvents().then(events=>{
     res.json(events);
@@ -13,7 +11,7 @@ router.get('/', (req,res)=>{
 });
 
 router.get('/:id', (req,res)=>{
-  queriesv1.getOneEvent(req.params.id).then(events=>{
+  queries.getOneEventByID(req.params.id).then(events=>{
     res.json(events);
   });
 });
