@@ -36,6 +36,12 @@ router.get('/sport/:sport/difficulty/:difficulty', (req,res)=>{
   });
 });
 
+router.post('/createEvent', (req, res, next) => {
+      queries.createEvent(req.body).then(result => {
+        res.send(result);
+      })
+})
+
 
 
 module.exports = router;
