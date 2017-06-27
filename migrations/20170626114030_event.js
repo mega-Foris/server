@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
     table.string('duration');
     table.integer('organizer_id').unsigned();
     table.foreign('organizer_id').references('person.id');
-    table.string('date_time').notNullable();
+    table.string('date_time');
   });
 };
 
