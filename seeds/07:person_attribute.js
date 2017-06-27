@@ -1,7 +1,7 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('TRUNCATE person_attribute CASCADE; ALTER SEQUENCE person_attribute_id_seq restart with 10')
+  return knex.raw('TRUNCATE person_attribute CASCADE; ALTER SEQUENCE person_attribute_id_seq restart with 13')
     .then(function () {
       // Inserts seed entries
       return knex('person_attribute').insert([
@@ -56,6 +56,24 @@ exports.seed = function(knex, Promise) {
         {
           id:9,
           person_id: 3,
+          attribute_id: 3,
+          value: 'climbing'
+        },
+        {
+          id:10,
+          person_id: 4,
+          attribute_id: 1,
+          value: 'http://cdnak1.psbin.com/img/mw=300/cr=n/d=jbf18/yy2zjwqv59zlzy63.jpg'
+        },
+        {
+          id:11,
+          person_id: 4,
+          attribute_id: 2,
+          value: '1992'
+        },
+        {
+          id:12,
+          person_id: 4,
           attribute_id: 3,
           value: 'climbing'
         }
