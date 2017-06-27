@@ -27,10 +27,13 @@ router.post('/signup', (req, res, next) => {
           .then(person => {
             console.log('person', person);
             if(!person) {
-              res.json({
-                person,
-                message: '✅'
-                })
+              Person.createPerson(req.body).then(result => {
+                res.send(result);
+              })
+              // res.json({
+              //   person,
+              //   message: '✅'
+              //   })
             } else {
               next( new Error('Email in use'));
             }

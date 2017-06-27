@@ -27,5 +27,11 @@ module.exports = {
   },
   getUserByEmail(email) {
     return knex('person').where('email', email).first();
+  },
+  createPerson(person) {
+    return knex('person').insert(person).returning('*')
+  },
+  createEvent(event) {
+    return knex('event').insert(event).returning('*')
   }
 };
