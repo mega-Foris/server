@@ -24,5 +24,8 @@ module.exports = {
   },
   getAllUsersByEventID(event_id){
     return knex('person_event').where('event_id', event_id);
+  },
+  getUserByEmail(email) {
+    return knex('person').where('email', email).first();
   }
 };

@@ -8,6 +8,7 @@ const cors = require('cors');
 
 const app = express();
 
+const auth = require('./auth');
 const events = require('./api/events.js');
 const persons = require('./api/persons.js');
 
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
-
+app.use('/auth', auth);
 
 //app.use('/api/v1/persons', persons);
 app.use('/api/v1/events', events);
