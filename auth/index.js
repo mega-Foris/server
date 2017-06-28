@@ -28,7 +28,7 @@ router.post('/signup', (req, res, next) => {
     Person
       .getUserByEmail(req.body.email)
       .then(person => {
-        console.log('person', person);
+        // console.log('person', person);
         if (!person) {
 
           bcrypt.hash(req.body.password, 10)
@@ -45,14 +45,14 @@ router.post('/signup', (req, res, next) => {
                 .createPerson(person)
                 .then(id => {
                   jwt.sign({
-                    id
+                    id: person.id
                   }, process.env.TOKEN_SECRET, {
                     expiresIn: '1hr'
                   }, (err, token) => {
                     console.log('err', err);
                     console.log('token', token);
                     res.json({
-                      id,
+                      id: person.id,
                       token,
                       message: 'ok'
                     })
@@ -90,7 +90,8 @@ router.post('/login', (req, res, next) => {
                       id: person.id,
                       token,
                       message: 'ok'
-                    })
+                    });
+                    alert('Sign-up Successful!')
                   });
               } else {
                 console.log('else');
