@@ -1,4 +1,5 @@
 const knex = require('./knex');
+const moment = require('moment');
 
 module.exports = {
   getAllEvents(){
@@ -83,10 +84,24 @@ module.exports = {
             });
           })
         ).then(()=>{
-        person.events = events;
+          person.futureevents = [];
+          person.pastevents = [];
+          const now = new Date();
+          const now_moment = moment.utc(now,'YYYY-MM-DD');
+          for (var i = 0; i < events.length; i++) {
+            let event_time = events[i].event_info[0].date_time;
+            var event_moment = moment.utc(event_time, 'YYYY-MM-DD');
+            //console.log('now_time =',now_moment);
+            //console.log('event_time =',event_moment);
+            if(event_moment.isAfter(now_moment)){
+              person.futureevents.push(events[i]);
+            }else{
+            person.pastevents.push(events[i]);i
+          }
+        }
         person.attributes = attributes;
         return person;
-      });
+        });
     });
   }
-};
+};//end total one

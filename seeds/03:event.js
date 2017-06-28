@@ -17,7 +17,7 @@ exports.seed = function(knex, Promise) {
           image_url:'http://www.momentumriverexpeditions.com/wp-content/uploads/2016/01/Clear-creek.jpg',
           duration: '8 hours',
           organizer_id: 1,
-          date_time: '11/12/17'
+          date_time: '2017-01-09'
           },
           {
           id: 2,
@@ -30,7 +30,7 @@ exports.seed = function(knex, Promise) {
           image_url:'https://nomadinrifle.files.wordpress.com/2011/12/img_0200a-edit.jpg',
           duration: '5 hours',
           organizer_id: 2,
-          date_time: '11/14/17'
+          date_time: '2017-10-01'
           },
           {
           id: 3,
@@ -43,7 +43,7 @@ exports.seed = function(knex, Promise) {
           image_url:'http://www.momentumriverexpeditions.com/wp-content/uploads/2016/01/Clear-creek.jpg',
           duration: '8 hours',
           organizer_id: 3,
-          date_time: '11/12/17'
+          date_time: '2017-09-10'
           }
       ]);
     });
