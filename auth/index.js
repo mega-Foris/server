@@ -1,8 +1,10 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
 const router = express.Router();
-
 const Person = require('../db/queries')
+
+require('dotenv').config();
 
 router.get('/', (req, res) => {
   res.json({
@@ -41,8 +43,20 @@ router.post('/signup', (req, res, next) => {
 
               Person
                 .createPerson(person)
-                .then(result => {
-                  res.send(result);
+                .then(id => {
+                  jwt.sign({
+                    id
+                  }, process.env.TOKEN_SECRET, {
+                    expiresIn: '1hr'
+                  }, (err, token) => {
+                    console.log('err', err);
+                    console.log('token', token);
+                    res.json({
+                      id,
+                      token,
+                      message: 'ok'
+                    })
+                  });
                 })
             })
         } else {
@@ -51,6 +65,47 @@ router.post('/signup', (req, res, next) => {
       })
   }
 })
+
+router.post('/login', (req, res, next) => {
+  if (validateUser(req.body)) {
+    Person
+      .getUserByEmail(req.body.email)
+      .then(person => {
+        console.log('person', person);
+        if (Person) {
+          console.log('if');
+          bcrypt.compare(req.body.password, person.password)
+            .then((result) => {
+
+              if (result) {
+                console.log('if2');
+                console.log(process.env.TOKEN_SECRET);
+                jwt.sign({
+                    id: person.id
+                  },
+                  process.env.TOKEN_SECRET, {expiresIn: '1hr'},(err, token) => {
+                    console.log('err', err);
+                    console.log('token', token);
+                    res.json({
+                      id: person.id,
+                      token,
+                      message: 'ok'
+                    })
+                  });
+              } else {
+                console.log('else');
+                next(new Error('Invalid user'))
+              }console.log('missed');
+            })
+          } else {
+            next( new Error('Invalid user'))
+          }
+        })
+  }
+});
+
+
+
 
 
 
