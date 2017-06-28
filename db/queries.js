@@ -16,9 +16,6 @@ module.exports = {
   getAllUsers(){
     return knex('person');
   },
-  getOneUserByID(id){
-    return knex('person').where('id', id).first();
-  },
   getAllUsersByEventID(event_id){
     return knex('person_event').where('event_id', event_id);
   },
@@ -45,12 +42,6 @@ module.exports = {
         const event = results[0];
         const people = results[1];
         const comments = results[2];
-        console.log(event);
-        console.log('break');
-        console.log(people);
-        console.log('break');
-        console.log(comments);
-
         return Promise.all(
           people.map(person=>{
             return knex('person_attribute')
@@ -68,5 +59,34 @@ module.exports = {
           return event;
         });
     });
-  } //end function
+  }, //end event id function
+  getOneUserByID(id) {
+    const promises = [
+      //return basic person information
+      knex('person').where('id', id).first(),
+      //return all events the person is attending
+      knex('person_event').where('person_event.person_id',id),
+      //return all attribute value for the person
+      knex('person_attribute').innerJoin('attribute', 'attribute.id', 'attribute_id').where('person_id', id)
+    ];
+    return Promise.all(promises)
+      .then(results => {
+        const person = results[0];
+        const events = results[1];
+        const attributes = results[2];
+        return Promise.all(
+          events.map(event=>{
+            return knex('event')
+            .where('id', event.event_id)
+            .then(event_info=>{
+              event.event_info = event_info;
+            });
+          })
+        ).then(()=>{
+        person.events = events;
+        person.attributes = attributes;
+        return person;
+      });
+    });
+  }
 };
