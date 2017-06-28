@@ -34,12 +34,28 @@ router.get('/sport/:sport/difficulty/:difficulty', (req,res)=>{
   });
 });
 
+
 router.post('/createEvent', (req, res, next) => {
       queries.createEvent(req.body).then(result => {
         console.log(req.body);
         res.send(result);
       })
 })
+
+
+//just duplicated directly above, but it's probably close.
+// router.delete('/deleteEvent', (req, res, next) => {
+//   queries.deleteEvent(req.body).then(result => {
+//     console.log(req.body);
+//     res.send(result);
+//   })
+// })
+// router.put('/changeEvent', (req, res, next) => {
+//   queries.changeEvent(req.body).then(result => {
+//     console.log(req.body);
+//     res.send(result);
+//   })
+// })
 
 
 
