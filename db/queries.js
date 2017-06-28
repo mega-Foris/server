@@ -12,7 +12,7 @@ module.exports = {
     return knex('event').where('difficulty', difficulty);
   },
   getAllEventsBySportAndDifficulty(sport, difficulty){
-    return knex('event').innerJoin('location', location_id, location.id).where('main_sport', sport).andWhere('difficulty', difficulty);
+    return knex('event').innerJoin('location', 'event.location_id', 'location.id').where('main_sport', sport).andWhere('difficulty', difficulty);
   }, //will ideally modify this so that it dynamically can accept any 2 filters or number
   getAllUsers(){
     return knex('person');
