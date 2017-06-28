@@ -96,7 +96,7 @@ module.exports = {
             if(event_moment.isAfter(now_moment)){
               person.futureevents.push(events[i]);
             }else{
-            person.pastevents.push(events[i]);i
+            person.pastevents.push(events[i]);
           }
         }
         person.attributes = attributes;

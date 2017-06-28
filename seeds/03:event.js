@@ -9,8 +9,8 @@ exports.seed = function(knex, Promise) {
         {
           id: 1,
           title: 'Kayak Trip',
-          main_sport:'kayaking',
-          difficulty:'beginner',
+          main_sport:'Kayaking',
+          difficulty:'Beginner',
           location_id:1,
           capacity:12,
           description:'Kayaking trip down the clear creek canyon, helmets advised!',
@@ -22,11 +22,11 @@ exports.seed = function(knex, Promise) {
           {
           id: 2,
           title: 'Climing Trip',
-          main_sport:'climbing',
-          difficulty:'expert',
+          main_sport:'Climbing',
+          difficulty:'Expert',
           location_id:2,
           capacity:8,
-          description:'climbing trip in clear creek canyon, gear provided',
+          description:'Climbing trip in clear creek canyon, gear provided',
           image_url:'https://nomadinrifle.files.wordpress.com/2011/12/img_0200a-edit.jpg',
           duration: '5 hours',
           organizer_id: 2,
@@ -35,16 +35,16 @@ exports.seed = function(knex, Promise) {
           {
           id: 3,
           title: 'Biking Trip',
-          main_sport:'biking',
-          difficulty:'intermediate',
+          main_sport:'Biking',
+          difficulty:'Intermediate',
           location_id:3,
           capacity:10,
-          description:'biking trip up the clear creek canyon trail, helmets advised! 12 mile trip up the trail. Elevation change will be about 1000 feet per mile. Bring lots fo water. Snacks will be provided. We will not stop and wait for you if you suck at this.',
+          description:'Biking trip up the clear creek canyon trail, helmets advised! 12 mile trip up the trail. Elevation change will be about 1000 feet per mile. Bring lots fo water. Snacks will be provided. We will not stop and wait for you if you suck at this.',
           image_url:'http://www.momentumriverexpeditions.com/wp-content/uploads/2016/01/Clear-creek.jpg',
           duration: '8 hours',
           organizer_id: 3,
           date_time: '2017-09-10'
-          }
+        }
       ]);
     });
 };
