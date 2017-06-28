@@ -63,6 +63,8 @@ router.post('/signup', (req, res, next) => {
           next(new Error('Invalid user'))
         }
       })
+  } else {
+    next(new Error('Invalid Password or Email'))
   }
 })
 
@@ -102,6 +104,8 @@ router.post('/login', (req, res, next) => {
             next( new Error('Invalid user'))
           }
         })
+  } else {
+    next( new Error('Invalid Password or Email'))
   }
 });
 
