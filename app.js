@@ -7,8 +7,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const jwt = require('jsonwebtoken')
 
+
 const app = express();
 
+const authMiddleware = require('./auth/middleware.js')
 const auth = require('./auth');
 const events = require('./api/events.js');
 const persons = require('./api/persons.js');
@@ -21,11 +23,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
+
+app.use(authMiddleware.checkTokenSetUser)
+
 app.use('/auth', auth);
 
 //app.use('/api/v1/persons', persons);
-app.use('/api/v1/events', events);
-app.use('/api/v1/persons', persons);
+app.use('/api/v1/events', authMiddleware.ensureLoggedIn, events);
+app.use('/api/v1/persons', authMiddleware.ensureLoggedIn, persons);
 
 
 // catch 404 and forward to error handler
