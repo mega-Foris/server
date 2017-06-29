@@ -26,7 +26,7 @@ router.post('/createPerson', (req, res, next) => {
       queries.createPerson(req.body).then(result => {
         console.log(req.body);
         res.send(result);
-      })
-})
+      });
+});
 
 module.exports = router;

@@ -1,7 +1,7 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('TRUNCATE location CASCADE; ALTER SEQUENCE location_id_seq restart with 4')
+  return knex.raw('TRUNCATE location CASCADE; ALTER SEQUENCE location_id_seq restart with 5')
     .then(function () {
       // Inserts seed entries
       return knex('location').insert([
@@ -21,11 +21,18 @@ exports.seed = function(knex, Promise) {
         },
         {
           id: 3,
-          city: 'denver',
+          city: 'Denver',
           state: 'Colorado',
           zip: '80211',
           google_id: 'flerty'
         },
+        {
+          id: 4,
+          city: 'Vail',
+          state: 'Colorado',
+          zip: '81658',
+          google_id: 'xhlasdhflk'
+        }
       ]);
     });
 };

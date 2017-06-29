@@ -22,6 +22,18 @@ exports.seed = function(knex, Promise) {
           person_id: 3,
           event_id: 3,
           comment: 'I had ribs for lunch... that\'s why I\'m doing this'
+        },
+        {
+          id: 4,
+          person_id: 2,
+          event_id: 2,
+          comment: 'Cannot wait'
+        },
+        {
+          id: 5,
+          person_id: 3,
+          event_id: 2,
+          comment: 'Lets\'s do this'
         }
       ]);
     });
