@@ -28,5 +28,11 @@ router.post('/createPerson', (req, res, next) => {
         res.send(result);
       });
 });
+router.post('/id/:id/eventid/:eventid', (req, res, next) => {
+      queries.addPerson(req.params.id, req.paramts.eventid).then(result => {
+        console.log(req.body);
+       res.send(result);
+      });
+});
 
 module.exports = router;

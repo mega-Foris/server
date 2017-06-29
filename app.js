@@ -33,7 +33,6 @@ app.use('/auth', auth);
 app.use('/api/v1/events', events);
 app.use('/api/v1/persons', authMiddleware.ensureLoggedIn, persons);
 
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
