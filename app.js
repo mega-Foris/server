@@ -25,14 +25,14 @@ app.use(cookieParser());
 app.use(cors());
 
 
-app.use(authMiddleware.checkTokenSetUser)
+//app.use(authMiddleware.checkTokenSetUser)
 
 app.use('/auth', auth);
 
 //app.use('/api/v1/persons', persons);
 app.use('/api/v1/events', events);
-app.use('/api/v1/persons', authMiddleware.ensureLoggedIn, persons);
-//app.use('/api/v1/persons', persons);
+//app.use('/api/v1/persons', authMiddleware.ensureLoggedIn, persons);
+app.use('/api/v1/persons', persons);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
