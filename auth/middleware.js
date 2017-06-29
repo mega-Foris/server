@@ -1,3 +1,4 @@
+const express = require('express')
 const jwt = require('jsonwebtoken')
 require('dotenv').config();
 
@@ -13,7 +14,6 @@ function checkTokenSetUser(req, res, next) {
 					req.user = decoded;
 					next();
 			}
-
 		});
 	} else {
 		next();
@@ -21,10 +21,13 @@ function checkTokenSetUser(req, res, next) {
 }
 
 function ensureLoggedIn(req, res, next){
-	console.log(req.user);
+	console.log('req.person below');
+		console.log(req.user);
 	if(req.user){
 		next();
+		console.log('NEXT! allow?');
 	} else {
+		console.log('401?!?');
 		res.status(401)
 		next(new Error('Un-Authorized'))
 	}
