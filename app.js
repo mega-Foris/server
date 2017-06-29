@@ -8,12 +8,13 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken')
 
 
-const app = express();
 
 const authMiddleware = require('./auth/middleware.js')
 const auth = require('./auth');
 const events = require('./api/events.js');
 const persons = require('./api/persons.js');
+
+const app = express();
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -29,7 +30,7 @@ app.use(authMiddleware.checkTokenSetUser)
 app.use('/auth', auth);
 
 //app.use('/api/v1/persons', persons);
-app.use('/api/v1/events', authMiddleware.ensureLoggedIn, events);
+app.use('/api/v1/events', events);
 app.use('/api/v1/persons', authMiddleware.ensureLoggedIn, persons);
 
 
