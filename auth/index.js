@@ -52,10 +52,11 @@ router.post('/signup', (req, res, next) => {
                     console.log('err', err);
                     console.log('token', token);
                     res.json({
-                      id: person.id,
+                      person,
+                      id,
                       token,
                       message: 'ok'
-                    })
+                    }); console.log(token);console.log(person);
                   });
                 })
             })
@@ -74,12 +75,12 @@ router.post('/login', (req, res, next) => {
       .getUserByEmail(req.body.email)
       .then(person => {
         console.log('person', person);
-        if (Person) {
+        if (person) {
           console.log('if');
           bcrypt.compare(req.body.password, person.password)
-            .then((result) => {
+            .then((id) => {
 
-              if (result) {
+              if (id) {
                 console.log('if2');
                 console.log(process.env.TOKEN_SECRET);
                 jwt.sign({
@@ -88,8 +89,10 @@ router.post('/login', (req, res, next) => {
                   process.env.TOKEN_SECRET, {expiresIn: '1hr'},(err, token) => {
                     console.log('err', err);
                     console.log('token', token);
+
                     res.json({
-                      id: person.id,
+                      person,
+                      id,
                       token,
                       message: 'ok'
                     });
