@@ -30,7 +30,7 @@ module.exports = {
     return knex('event').insert(event).returning('*');
   },
   addPerson(id, event_id){
-    return knex('person_event').insert({person_id: id, event_id: event_id});
+    return knex('person_event')//.insert({person_id: id, event_id: event_id});
   },
   getOneEventByID(id) {
     const promises = [
