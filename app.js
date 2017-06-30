@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken')
 
 
 const authMiddleware = require('./auth/middleware.js')
-const auth = require('./auth');
+const auth = require('./auth/index.js');
 const events = require('./api/events.js');
 const persons = require('./api/persons.js');
 
