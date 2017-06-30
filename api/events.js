@@ -4,6 +4,8 @@ const router = express.Router();
 
 const queries = require('../db/queries.js');
 
+const moment = require('moment');
+
 router.get('/', (req,res)=>{
   queries.getAllEvents().then(events=>{
     res.json(events);
@@ -36,6 +38,9 @@ router.get('/sport/:sport/difficulty/:difficulty', (req,res)=>{
 
 
 router.post('/createEvent',  (req, res, next) => {
+    //  console.log(req.body.date_time);
+    //  req.body.date_time = moment(req.body.date_time).format('YYYY-MM-DD');
+    //  console.log(req.body.date_time);
       queries.createEvent(req.body).then(result => {
         console.log(req.body);
         res.send(result);

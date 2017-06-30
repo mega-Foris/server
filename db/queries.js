@@ -12,7 +12,7 @@ module.exports = {
     return knex('event').where('difficulty', difficulty);
   },
   getAllEventsBySportAndDifficulty(sport, difficulty){
-    return knex('event').innerJoin('location', 'event.location_id', 'location.id').where('main_sport', sport).andWhere('difficulty', difficulty);
+    return knex('event').select('capacity', 'city', 'date_time', 'description', 'difficulty', 'duration','google_id', 'location.id as location_id', 'event.id as id', 'image_url', 'main_sport', 'organizer_id', 'state', 'title','zip').innerJoin('location', 'event.location_id', 'location.id').where('main_sport', sport).andWhere('difficulty', difficulty);
   }, //will ideally modify this so that it dynamically can accept any 2 filters or number
   getAllUsers(){
     return knex('person');
@@ -38,7 +38,7 @@ module.exports = {
   getOneEventByID(id) {
     const promises = [
       //return event joined to location
-      knex('event').innerJoin('location', 'event.location_id', 'location.id').where('event.id', id).first(),
+      knex('event').select('location.id as location_id', '*').innerJoin('location', 'event.location_id', 'location.id').where('event.id', id).first(),
       //return person_event joined to person
       knex('person_event').innerJoin('person', 'person_event.person_id', 'person.id').where('person_event.event_id',id),
       //get all comments where event_id is one we are interested in
