@@ -32,6 +32,9 @@ module.exports = {
   addPerson(id, event_id){
     return knex('person_event').insert({person_id: id, event_id: event_id, is_organizer: false});
   },
+  addComment(id, event_id, comment){
+    return knex('comment').insert({person_id: id, event_id: event_id, comment: comment});
+  },
   getOneEventByID(id) {
     const promises = [
       //return event joined to location

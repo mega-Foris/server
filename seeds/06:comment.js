@@ -1,7 +1,7 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('TRUNCATE comment CASCADE; ALTER SEQUENCE comment_id_seq restart with 4')
+  return knex.raw('TRUNCATE comment CASCADE; ALTER SEQUENCE comment_id_seq restart with 6')
     .then(function () {
       // Inserts seed entries
       return knex('comment').insert([
