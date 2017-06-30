@@ -1,5 +1,5 @@
 # server
-![ERD](https://www.lucidchart.com/publicSegments/view/2dc90bbe-2be5-4d68-ae6e-20482de2ebc0/image.pdf)
+![ERD](https://www.lucidchart.com/publicSegments/view/c0677cbb-0922-424b-8bbe-548dae4c1608/image.jpeg)
 
 # Foris Adventures
 
