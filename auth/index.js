@@ -113,11 +113,7 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/add/id/:id/eventid/:eventid', (req, res, next) => {
-  console.log('we made it into the router');
-  console.log(req.body);
-  console.log('why was that the body');
-      Person.addPerson(req.params.id, req.paramts.eventid).then(result => {
-        console.log(req.body);
+      Person.addPerson(req.params.id, req.params.eventid).then(result => {
        res.send(result);
       });
 });
