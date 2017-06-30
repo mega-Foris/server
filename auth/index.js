@@ -112,10 +112,8 @@ router.post('/login', (req, res, next) => {
   }
 });
 
-router.post('add/id/:id/eventid/:eventid', (req, res, next) => {
-  console.log(req.body);
-      Person.addPerson(req.params.id, req.paramts.eventid).then(result => {
-        console.log(req.body);
+router.post('/add/id/:id/eventid/:eventid', (req, res, next) => {
+      Person.addPerson(req.params.id, req.params.eventid).then(result => {
        res.send(result);
       });
 });
