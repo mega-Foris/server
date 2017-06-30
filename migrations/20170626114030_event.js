@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('title').notNullable();
     table.string('main_sport').notNullable();
     table.string('difficulty').notNullable();
-    table.integer('location_id').defaultTo(2);;
+    table.integer('location_id').defaultTo(2);
     table.integer('capacity');
     table.string('description');
     table.string('image_url');
