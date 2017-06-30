@@ -118,6 +118,13 @@ router.post('/add/id/:id/eventid/:eventid', (req, res, next) => {
       });
 });
 
+router.post('/add/id/:id/eventid/:eventid/comment/:comment', (req, res, next) => {
+      Person.addComment(req.params.id, req.params.eventid, req.params.comment).then(result => {
+       res.send(result);
+      });
+});
+
+
 
 
 

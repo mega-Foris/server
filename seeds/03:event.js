@@ -105,7 +105,7 @@ exports.seed = function(knex, Promise) {
           location_id:3,
           capacity:12,
           description:'Try out kayaking for the first time and I promise you will not be disappointed! Bring a quick dry jacket as the mornings on the water can be chilly!',
-          image_url:'http://www.placestoseeinyourlifetime.com/wp-content/uploads/2015/07/Top-10-Kayaking-Norway2-980x653.jpg',
+          image_url:'https://22677-presscdn-pagely.netdna-ssl.com/wp-content/uploads/2013/11/cwpage.jpg',
           duration: '4 hours',
           organizer_id: 9,
           date_time: '2017-10-10'
